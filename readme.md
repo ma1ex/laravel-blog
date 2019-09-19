@@ -170,7 +170,7 @@ $ php artisan migrate
 
 ***2.*** Установка плагина Laravel plugin
 
-- В PhpStorm`е зайти "File -> Settings... -> Plugins -> Marketplace" и в строке поиска поискать Laravel plugin, а затем установить его. Далее там же в настройках идете "Languages & Frameworks -> PHP -> Laravel" и активируете плагин, установив галочку "Enable plugin for this project".
+- В PhpStorm'е зайти "File -> Settings... -> Plugins -> Marketplace" и в строке поиска поискать `Laravel plugin`, а затем установить его. Далее там же в настройках идете `"Languages & Frameworks -> PHP -> Laravel"` и активируете плагин, установив галочку `"Enable plugin for this project"`.
 
 - Установка "Laravel IDE Heplper" для корректрной работы автодополнений фасадов. Идем на сайт https://github.com/barryvdh/laravel-ide-helper и через композер устанавливаем дополнительный пакет для проекта в секцию DEV:
 
@@ -306,4 +306,22 @@ $ php -S localhost:8002 tools/db/phpMyAdmin/router.php
 
 Однако, это приложение тяжело для этого сервера и будет несчадно тормозить... Лучше использовать вариант со встроенным.
 
+### 5. Начало разработки
 
+***1.*** Генерация механизма аутентификации
+
+С версии 6.0 порядок создания механизма аутентификации изменился с ранее простого `php artisan make:auth` на _(выполнить последовательно)_:
+
+```Bash
+$ composer.phar require laravel/ui
+$ php artisan ui vue --auth
+```
+
+затем
+
+```Bash
+$ npm install
+$ npm run dev
+```
+
+А все потому, что интерфейс основан на Vue.js и для отрисовки страниц необходимо скомпилировать билд. Только после этого аутентификация штатно заработает. 

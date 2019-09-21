@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
 <div id="app">
@@ -36,7 +37,7 @@
                     <li class="dropdown">
                         <a href="#" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Блог</a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li class="dropdown-item"><a href="#">Категории</a></li>
+                            <li class="dropdown-item"><a href="{{route('admin.category.index')}}">Категории</a></li>
                             <li class="dropdown-item"><a href="#">Материалы</a></li>
                         </ul>
                     </li>

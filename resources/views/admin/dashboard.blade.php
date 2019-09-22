@@ -49,7 +49,7 @@
 
         <div class="row">
             <div class="col-sm-6">
-                <a class="btn btn-block btn-outline-primary" href="#">Создать категорию</a>
+                <a class="btn btn-block btn-outline-primary" href="{{route('admin.category.create')}}">Создать категорию</a>
                 <h4 class="list-group-item-heading">Категория первая</h4>
                 <ul class="list-group">
                     <a href="!#"><li class="list-group-item d-flex justify-content-between align-items-center active">Cras justo odio <span class="badge badge-primary badge-pill">14</span></li></a>

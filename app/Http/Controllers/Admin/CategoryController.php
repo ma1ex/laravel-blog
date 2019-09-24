@@ -81,8 +81,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Category $category) {
-        //
+        // Обновление категории, не затрагивая поле Slug - оно уникально
         $category->update($request->except('slug'));
+        // Переадресация на страницу с категориями после успешного изменения
         return redirect()->route('admin.category.index');
     }
 
@@ -92,8 +93,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
-    {
-        //
+    public function destroy(Category $category) {
+        // Удаление категории
+        $category->delete();
+        // Переадресация на страницу с категориями после успешного удаления
+        return redirect()->route('admin.category.index');
+
     }
 }

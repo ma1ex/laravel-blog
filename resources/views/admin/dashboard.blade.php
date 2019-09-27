@@ -50,33 +50,27 @@
         <div class="row">
             <div class="col-sm-6">
                 <a class="btn btn-block btn-outline-primary" href="{{route('admin.category.create')}}">Создать категорию</a>
-                <h4 class="list-group-item-heading">Категория первая</h4>
+
+                <div>&nbsp;</div>
+                <h4 class="list-group-item-heading">Категории:</h4>
                 <ul class="list-group">
-                    <a href="!#"><li class="list-group-item d-flex justify-content-between align-items-center active">Cras justo odio <span class="badge badge-primary badge-pill">14</span></li></a>
-                    <a href="!#"><li class="list-group-item d-flex justify-content-between align-items-center">Dapibus ac facilisis in <span class="badge badge-primary badge-pill">2</span></li></a>
-                    <a href="!#"><li class="list-group-item d-flex justify-content-between align-items-center">Morbi leo risus <span class="badge badge-primary badge-pill">7</span></li></a>
+                    @foreach($categories as $category)
+                        <a href="{{route('admin.category.edit', $category)}}"><li class="list-group-item d-flex justify-content-between align-items-center">{{$category->title}} <span class="badge badge-primary badge-pill">{{$category->articles()->count()}}</span></li></a>
+                    @endforeach
                 </ul>
-                <p class="list-group-item-text">
-                    Кол-во материалов
-                </p>
 
             </div>
             <div class="col-sm-6">
                 <a class="btn btn-block btn-outline-primary" href="#">Создать материал</a>
 
-                <a class="list-group-item" href="#">
-                    <h4 class="list-group-item-heading">Материал первый</h4>
+                @foreach($articles as $article)
+                <a class="list-group-item" href="{{route('admin.article.edit', $article)}}">
+                    <h4 class="list-group-item-heading">{{$article->title}}</h4>
                     <p class="list-group-item-text">
-                        Категория
+                        Категории: {{$article->categories()->pluck('title')->implode(', ')}}
                     </p>
                 </a>
-
-                <a class="list-group-item" href="#">
-                    <h4 class="list-group-item-heading">Материал первый</h4>
-                    <p class="list-group-item-text">
-                        Категория
-                    </p>
-                </a>
+                @endforeach
 
             </div>
         </div>

@@ -9,7 +9,7 @@ class Article extends Model
 {
     // Заполнение полей
     protected $fillable = ['title', 'slug', 'description_short', 'description',
-        'image', 'image_show', 'meta_title', 'meta_description', 'meta_keyword',
+        'image', 'image_show', 'meta_title', 'meta_description', 'meta_keywords',
         'published', 'created_by', 'modified_by'
     ];
 

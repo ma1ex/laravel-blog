@@ -70,9 +70,13 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
-    {
+    public function edit(Article $article) {
         //
+        return view('admin.articles.edit', [
+            'article' => $article,
+            'categories' => Category::with('children')->where('parent_id', 0)->get(),
+            'delimiter' => ''
+        ]);
     }
 
     /**
@@ -82,9 +86,17 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
-    {
+    public function update(Request $request, Article $article) {
         //
+        $article->update($request->except('slug'));
+
+        //
+        $article->categories()->detach();
+        if($request->input('categories')) :
+            $article->categories()->attach($request->input('categories'));
+        endif;
+
+        return redirect()->route('admin.article.index');
     }
 
     /**
@@ -93,8 +105,11 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
-    {
-        //
+    public function destroy(Article $article) {
+        // Отсоединение от привязанных категорий, если таковые есть
+        $article->categories()->detach();
+        $article->delete();
+
+        return redirect()->route('admin.article.index');
     }
 }

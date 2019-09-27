@@ -18,14 +18,14 @@
                 <div class="card text-white bg-primary">
                     <div class="card-body">
                         <h4 class="card-title">Категории</h4>
-                        <p class="card-text">Категорий 0</p>
+                        <p class="card-text">Категорий: {{$count_categories}}</p>
                     </div>
                 </div>
 
                 <div class="card text-white bg-dark">
                     <div class="card-body">
                         <h4 class="card-title">Материалы</h4>
-                        <p class="card-text">Материалов 0</p>
+                        <p class="card-text">Материалов: {{$count_articles}}</p>
                     </div>
                 </div>
 
@@ -63,6 +63,8 @@
             <div class="col-sm-6">
                 <a class="btn btn-block btn-outline-primary" href="#">Создать материал</a>
 
+                <div>&nbsp;</div>
+                <h4 class="list-group-item-heading">Статьи:</h4>
                 @foreach($articles as $article)
                 <a class="list-group-item" href="{{route('admin.article.edit', $article)}}">
                     <h4 class="list-group-item-heading">{{$article->title}}</h4>

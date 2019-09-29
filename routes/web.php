@@ -18,7 +18,7 @@ Route::get('/', 'FrontController@index')->name('index');
 Route::get('/blog/category/{slug?}', 'BlogController@category')->name('category');
 Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
 //
-Route::get('/categories', 'BlogController@categories')->name('categories');
+Route::get('/blog/categories', 'BlogController@categories')->name('categories');
 
 Auth::routes();
 

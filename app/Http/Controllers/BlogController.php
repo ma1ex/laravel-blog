@@ -18,10 +18,8 @@ class BlogController extends Controller
     }
 
     public function categories() {
-        $categories = Category::all();
-
-        return view('blog.category', [
-            'categories' => $categories
+        return view('blog.categories', [
+            'categories' => Category::all()
         ]);
     }
 

@@ -22,7 +22,7 @@
 <input type="text" class="form-control" name="meta_description" placeholder="Мета описание" value="{{$article->meta_description ?? ""}}">
 
 <label for="">Ключевые слова</label>
-<input type="text" class="form-control" name="meta_keyword" placeholder="Ключевые слова, через запятую" value="{{$article->meta_keyword ?? ""}}">
+<input type="text" class="form-control" name="meta_keywords" placeholder="Ключевые слова, через запятую" value="{{$article->meta_keywords ?? ""}}">
 
 <label for="">Родительская категория</label>
 <select class="form-control" name="categories[]" multiple="">

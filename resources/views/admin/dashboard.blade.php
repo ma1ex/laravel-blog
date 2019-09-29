@@ -24,8 +24,8 @@
 
                 <div class="card text-white bg-dark">
                     <div class="card-body">
-                        <h4 class="card-title">Материалы</h4>
-                        <p class="card-text">Материалов: {{$count_articles}}</p>
+                        <h4 class="card-title">Статьи</h4>
+                        <p class="card-text">Статей: {{$count_articles}}</p>
                     </div>
                 </div>
 

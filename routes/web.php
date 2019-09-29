@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('blog.home');
-});
+// Главная страница: точка входа
+Route::get('/', 'FrontController@index')->name('index');
+
+// Вывод категорий и статей
+Route::get('/blog/category/{slug?}', 'BlogController@category')->name('category');
+Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
+//
+Route::get('/categories', 'BlogController@categories')->name('categories');
 
 Auth::routes();
 
@@ -24,4 +29,3 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
 });
 
-Route::get('/home', 'HomeController@index')->name('home');

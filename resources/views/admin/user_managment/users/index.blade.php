@@ -17,9 +17,9 @@
 
         <table class="table table-striped">
             <thead>
-            <th>Имя</th>
-            <th>Email</th>
-            <th class="text-right">Действие</th>
+                <th>Имя</th>
+                <th>Email</th>
+                <th class="text-right">Действие</th>
             </thead>
             <tbody>
             @forelse ($users as $user)

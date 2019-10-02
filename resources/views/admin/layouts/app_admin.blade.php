@@ -26,8 +26,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
-            </a> / &nbsp;
-            <a href="{{route('admin.index')}}">Панель управления</a>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,6 +34,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{route('admin.index')}}">Панель управления</a></li>
                     <li class="dropdown">
                         <a href="#" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Блог</a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -43,8 +43,8 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Управление пользователями</a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <a href="#" class="btn dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Управление пользователями</a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                             <li class="dropdown-item"><a href="{{route('admin.user_managment.user.index')}}">Пользователи</a></li>
                         </ul>
                     </li>

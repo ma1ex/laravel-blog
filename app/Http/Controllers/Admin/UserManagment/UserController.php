@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\UserManagment;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -25,9 +27,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('admin.user_managment.users.create', [
+            'user' => []
+        ]);
     }
 
     /**
@@ -36,9 +39,21 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
+        $validator = $request->validate([
+            'name' => ['required', 'string', 'max:190'],
+            'email' => ['required', 'string', 'email', 'max:190', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
+
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password'])
+        ]);
+
+        return redirect()->route('admin.user_managment.user.index');
     }
 
     /**
@@ -58,9 +73,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
-    {
-        //
+    public function edit(User $user) {
+        return view('admin.user_managment.users.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -70,9 +86,20 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
-    {
-        //
+    public function update(Request $request, User $user) {
+        $validator = $request->validate([
+            'name' => ['required', 'string', 'max:190'],
+            'email' => ['required', 'string', 'email', 'max:190',
+                Rule::unique('users')->ignore($user->id)],
+            'password' => ['nullable', 'string', 'min:6', 'confirmed'],
+        ]);
+
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $request['password'] == null ?: $user->password = Hash::make($request['password']);
+        $user->save();
+
+        return redirect()->route('admin.user_managment.user.index');
     }
 
     /**
@@ -81,8 +108,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
-    {
+    public function destroy(User $user) {
         //
+        $user->delete();
+
+        return redirect()->route('admin.user_managment.user.index');
     }
 }
